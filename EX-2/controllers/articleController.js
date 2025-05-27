@@ -34,13 +34,15 @@ export const createNewArticle = (req, res) => {
 // PUT /articles/:id - Update article
 export const updateArticleInfo = (req, res) => {
     const articleId = parseInt(req.params.id);
-    const { title, content } = req.body;
+    const { title, content, journalistId, categoryId } = req.body;
 
     const article = articles.find(a => a.id === articleId);
     if (!article) return res.status(404).json({ error: 'Article not found' });
 
     if (title) article.title = title;
     if (content) article.content = content;
+    if (journalistId) article.journalistId = journalistId;
+    if (categoryId) article.categoryId = categoryId;
 
     res.json(article);
 }
