@@ -15,7 +15,7 @@ export const getArticleById = (req, res) => {
 
 // POST /articles - Create new article
 export const createNewArticle = (req, res) => {
-    const { title, content } = req.body;
+    const { title, content, journalistId, categoryId } = req.body;
     if (!title || !content) {
         return res.status(400).json({ error: 'Title and content are required' });
     }
@@ -23,7 +23,9 @@ export const createNewArticle = (req, res) => {
     const newArticle = {
         id: articles.length + 1,
         title,
-        content
+        content,
+        journalistId, 
+        categoryId
     };
     articles.push(newArticle);
     res.status(201).json(newArticle);
