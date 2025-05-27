@@ -1,4 +1,5 @@
 import journalists from "../models/journalistModel.js";
+import articles from "../models/articleModel.js";
 
 // GET /journalists - List all journalists
 export const getAllJournalists = (req, res) => {

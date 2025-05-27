@@ -1,5 +1,5 @@
 import categories from "../models/categoryModel.js";
-
+import articles from "../models/articleModel.js";
 // GET /categories - List all categories
 export const getAllCategories = (req, res) => {
     res.json(categories);

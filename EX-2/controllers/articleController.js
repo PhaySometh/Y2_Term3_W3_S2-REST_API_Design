@@ -2,7 +2,15 @@ import articles from "../models/articleModel.js";
 
 // GET /articles - List all articles
 export const getAllArticles = (req, res) => {
-    res.json(articles);
+    const { journalistId, categoryId } = req.query;
+    let filteredArticles = articles;
+    if (journalistId) {
+        filteredArticles = filteredArticles.filter(article => article.journalistId === parseInt(journalistId));
+    }
+    if (categoryId) {
+        filteredArticles = filteredArticles.filter(article => article.categoryId === parseInt(categoryId));
+    }
+    res.json(filteredArticles);
 }
 
 // GET /articles/:id - Get an article
